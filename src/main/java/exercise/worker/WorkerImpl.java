@@ -25,7 +25,7 @@ public class WorkerImpl implements Worker {
 
     @Override
     public String getCatalog() {
-        StringBuilder sb = new StringBuilder("Ачо почем й\n");
+        StringBuilder sb = new StringBuilder("Список доступных статей:\n");
         library.getAllTitles()
                 .stream()
                 .sorted(String::compareTo)
@@ -38,8 +38,8 @@ public class WorkerImpl implements Worker {
         List<Article> result = articles
                 .stream()
                 .filter(this::isArticleCorrect)
-                .distinct()
-                .collect(Collectors.toList());
+                .distinct() //
+                .toList();
         result.forEach(this::prepareDate);
         return result;
     }
