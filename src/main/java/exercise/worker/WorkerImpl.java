@@ -25,7 +25,7 @@ public class WorkerImpl implements Worker {
 
     @Override
     public String getCatalog() {
-        StringBuilder sb = new StringBuilder("Список доступных статей:\n");
+        StringBuilder sb = new StringBuilder("Ачо почем й\n");
         library.getAllTitles()
                 .stream()
                 .sorted(String::compareTo)

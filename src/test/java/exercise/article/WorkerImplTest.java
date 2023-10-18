@@ -5,6 +5,7 @@ import static org.mockito.Mockito.*;
 
 import exercise.worker.Worker;
 import exercise.worker.WorkerImpl;
+import lombok.extern.java.Log;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -17,6 +18,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+@Log
+@DisplayName("Проверка реализации работника")
 class WorkerImplTest {
     private final String testCatalog = """
                 Список доступных статей:
@@ -191,5 +194,16 @@ class WorkerImplTest {
                 "noBrain",
                 LocalDate.of(2023, 10, 16)));
         assertEquals(1, worker.prepareArticles(articles).size());
+    }
+
+    @DisplayName("")
+    @Test
+    public void testNullableArticle() {
+        articles.add(new Article(
+                null,
+                null,
+                null,
+                null));
+        assertEquals(0, worker.prepareArticles(articles).size());
     }
 }
